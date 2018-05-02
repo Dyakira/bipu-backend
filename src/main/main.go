@@ -1,24 +1,25 @@
 package main
 
 import (
-	"flag"
-	"os"
-	"github.com/gin-gonic/gin"
-	"bipu-backend/src/main/middleware"
-	"syscall"
-	"io/ioutil"
-	"strconv"
 	"bipu-backend/src/main/controller"
-	"github.com/gin-gonic/contrib/sessions"
+	"bipu-backend/src/main/middleware"
+	"flag"
+	"io/ioutil"
+	"os"
+	"strconv"
+	"syscall"
 
+	"github.com/gin-gonic/contrib/sessions"
+	"github.com/gin-gonic/gin"
+
+	"bipu-backend/src/main/model"
 	"fmt"
+	"log"
 	"path/filepath"
 	"strings"
-	"log"
-	"bipu-backend/src/main/model"
 )
 
-func init(){
+func init() {
 	fmt.Print(GetCurrentDirectory())
 	err := initGlobalConfig()
 	//出现初始化问题，终止服务
@@ -29,18 +30,18 @@ func init(){
 }
 
 func GetCurrentDirectory() string {
-	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))  //返回绝对路径  filepath.Dir(os.Args[0])去除最后一个元素的路径
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0])) //返回绝对路径  filepath.Dir(os.Args[0])去除最后一个元素的路径
 	if err != nil {
 		log.Fatal(err)
 	}
 	return strings.Replace(dir, "\\", "/", -1) //将\替换成/
 }
 
-
 /*从配置文件conf/config.json加载全局配置文件*/
 func initGlobalConfig() error {
 	if conf, err := middleware.GetConfig(); err == nil {
 		middleware.Config = conf
+		model.CommomInitDB()
 		model.InitDB()
 	} else {
 		return err
@@ -64,6 +65,11 @@ func main() {
 	{
 		v1.GET("/login", controller.LoginHandler)
 		v1.GET("auth/github/callback", controller.GithubCallback)
+	}
+
+	// volume controller
+	{
+		v1.GET("/volume", controller.QueryVolumesAll)
 	}
 
 	authorized := v1.Group("/")

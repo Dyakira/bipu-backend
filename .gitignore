@@ -2,3 +2,4 @@
 .idea/
 vendor/*/
 src/main/conf/*
+src/main/main.exe

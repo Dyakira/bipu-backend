@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"io/ioutil"
 	"encoding/json"
+	"io/ioutil"
 )
 
 var (
@@ -11,6 +11,7 @@ var (
 
 const (
 	ConfigFile = "src/main/conf/config.json"
+	// ConfigFile = "conf/config.json"
 )
 
 type Db struct {
@@ -25,19 +26,18 @@ type Db struct {
 type Credentials struct {
 	ClientID     string `json:"clientid"`
 	ClientSecret string `json:"secret"`
-	RedirectURL string `json:"redirectUrl"`
+	RedirectURL  string `json:"redirectUrl"`
 }
 
 type Session struct {
-	SessionName string
+	SessionName   string
 	SessionSecret string
 }
 
-
 type Configuration struct {
-	Db     Db
+	Db          Db
 	Credentials Credentials
-	Session Session
+	Session     Session
 }
 
 func GetConfig() (*Configuration, error) {
