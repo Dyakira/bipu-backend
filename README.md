@@ -34,7 +34,7 @@ conf/config.json 格式如下
 ### 正式  
  + 编译  
     
-        `sudo CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build server.go`
+        `sudo CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go`
  + 运行   
         
          `$> nohup ./main > /dev/null 2>stderr.log &`
