@@ -71,6 +71,7 @@ func main() {
 	{
 		v1.GET("/volume", controller.QueryVolumesAll)
 		v1.GET("/volume/user/:uid", controller.QueryVolumesByUid)
+		v1.GET("/volume/vid/:vid", controller.QueryVolumesByVid)
 	}
 
 	authorized := v1.Group("/")

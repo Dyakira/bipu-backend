@@ -22,12 +22,13 @@
 
     ` GET  /volume/user/:uid`
 
+    **完成 有待分页**
 
 3. Get a single volume
 
     通过谱册id获取一个谱册的信息
 
-    ` GET  /volume/:vid`
+    ` GET  /volume/vid/:vid`
 
 4. Create a volume （需验证）
 

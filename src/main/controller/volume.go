@@ -8,13 +8,19 @@ import (
 
 func QueryVolumesAll(c *gin.Context) {
 	volumes := model.QueryVolumesAll()
-
-	c.JSON(200, gin.H{"volumes": volumes})
+	OkNormal(c, volumes)
 }
 
 func QueryVolumesByUid(c *gin.Context) {
 	uid := c.Params.ByName("uid")
 	volumes := model.QueryVolumesByUid(uid)
 
-	c.JSON(200, gin.H{"volumes": volumes})
+	OkNormal(c, volumes)
+}
+
+func QueryVolumesByVid(c *gin.Context) {
+	vid := c.Params.ByName("vid")
+	volumes := model.QueryVolumesByVid(vid)
+
+	OkNormal(c, volumes)
 }

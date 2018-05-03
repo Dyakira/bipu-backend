@@ -41,3 +41,12 @@ func QueryVolumesByUid(uid string) []Volume {
 
 	return volumes
 }
+
+// 查询一个用户创建的所有谱册
+func QueryVolumesByVid(vid string) []Volume {
+	volumes := make([]Volume, 0)
+	db := CommomGetDB()
+	db.Where(dbColumn("Vid")+" = ?", vid).Find(&volumes)
+
+	return volumes
+}
