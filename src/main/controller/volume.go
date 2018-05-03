@@ -11,3 +11,10 @@ func QueryVolumesAll(c *gin.Context) {
 
 	c.JSON(200, gin.H{"volumes": volumes})
 }
+
+func QueryVolumesByUid(c *gin.Context) {
+	uid := c.Params.ByName("uid")
+	volumes := model.QueryVolumesByUid(uid)
+
+	c.JSON(200, gin.H{"volumes": volumes})
+}

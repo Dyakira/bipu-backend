@@ -1,6 +1,7 @@
 package model
 
 import (
+	"bipu-backend/src/main/util"
 	"time"
 )
 
@@ -19,6 +20,10 @@ func (Volume) TableName() string {
 	return "tab_volume"
 }
 
+func dbColumn(structFieldName string) string {
+	return util.GetStructTagName4Gorm(&Volume{}, structFieldName, TAB_FIELD_KEY)
+}
+
 // 查询所有谱册
 func QueryVolumesAll() []Volume {
 	volumes := make([]Volume, 0)
@@ -30,6 +35,9 @@ func QueryVolumesAll() []Volume {
 
 // 查询一个用户创建的所有谱册
 func QueryVolumesByUid(uid string) []Volume {
-	// TODO 待实现
-	return nil
+	volumes := make([]Volume, 0)
+	db := CommomGetDB()
+	db.Where(dbColumn("Uid")+" = ?", uid).Find(&volumes)
+
+	return volumes
 }

@@ -70,6 +70,7 @@ func main() {
 	// volume controller
 	{
 		v1.GET("/volume", controller.QueryVolumesAll)
+		v1.GET("/volume/user/:uid", controller.QueryVolumesByUid)
 	}
 
 	authorized := v1.Group("/")
