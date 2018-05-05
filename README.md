@@ -41,3 +41,7 @@ conf/config.json 格式如下
  + 结束
             
          kill `cat bipu_server.pid`
+
+### etc
+
+接口文档：etc/interface.md
