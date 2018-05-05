@@ -29,6 +29,8 @@
     通过谱册id获取一个谱册的信息
 
     ` GET  /volume/vid/:vid`
+    
+    **完成 有待分页**
 
 4. Create a volume （需验证）
 

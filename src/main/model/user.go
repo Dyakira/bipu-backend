@@ -1,11 +1,12 @@
 package model
 
 import (
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"time"
 	"bipu-backend/src/main/middleware"
 	"fmt"
+	"time"
+
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 var (
@@ -59,7 +60,7 @@ func InsertUserInfo(user *User) (err error) {
 	return nil
 }
 
-func QueryUserInfo(userId int) (User) {
+func QueryUserInfo(userId int) User {
 	var err error
 	db, err := gorm.Open("mysql", dbConnect)
 	if err != nil {
@@ -71,5 +72,20 @@ func QueryUserInfo(userId int) (User) {
 
 	var user User
 	db.Where("uid = ?", userId).First(&user)
+	return user
+}
+
+func QueryUserByLogin(login string) User {
+	var err error
+	db, err := gorm.Open("mysql", dbConnect)
+	if err != nil {
+		panic("failed to connect database")
+	}
+	//defer db.Close()
+	db.LogMode(true)
+	defer db.Close()
+
+	var user User
+	db.Where("login = ?", login).First(&user)
 	return user
 }

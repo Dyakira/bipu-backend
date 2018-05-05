@@ -7,7 +7,7 @@ import (
 
 // 谱册表
 type Volume struct {
-	Vid        string    `json:"vid" gorm:"column:f_vid"`
+	Vid        string    `json:"vid" gorm:"column:f_vid;primary_key;AUTO_INCREMENT"`
 	Name       string    `json:"name" gorm:"column:f_name"`
 	Cover      string    `json:"cover" gorm:"column:f_cover"`
 	Desc       string    `json:"desc" gorm:"column:f_desc"`
@@ -22,6 +22,17 @@ func (Volume) TableName() string {
 
 func dbColumn(structFieldName string) string {
 	return util.GetStructTagName4Gorm(&Volume{}, structFieldName, TAB_FIELD_KEY)
+}
+
+// 查询所有谱册
+func InsertVolume(volume *Volume) []Volume {
+	db := CommomGetDB()
+	if db.NewRecord(*volume) {
+		db.Create(volume)
+	} else {
+		// 已经存在这条记录了
+	}
+	return nil
 }
 
 // 查询所有谱册

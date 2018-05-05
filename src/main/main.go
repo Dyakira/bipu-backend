@@ -67,6 +67,11 @@ func main() {
 		v1.GET("auth/github/callback", controller.GithubCallback)
 	}
 
+	// user controller
+	{
+		v1.POST("/user/register", controller.InsertUser)
+		v1.POST("/user/loginnew", controller.UserLogin)
+	}
 	// volume controller
 	{
 		v1.GET("/volume", controller.QueryVolumesAll)

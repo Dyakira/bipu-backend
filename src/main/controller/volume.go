@@ -3,6 +3,7 @@ package controller
 import (
 	"bipu-backend/src/main/model"
 
+	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
 
@@ -23,4 +24,12 @@ func QueryVolumesByVid(c *gin.Context) {
 	volumes := model.QueryVolumesByVid(vid)
 
 	OkNormal(c, volumes)
+}
+
+func InsertVolume(c *gin.Context) {
+
+	session := sessions.Default(c)
+	uid := session.Get("uid")
+	// TODO
+	OkNormal(c, uid)
 }
