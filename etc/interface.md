@@ -6,6 +6,33 @@
 
     ` GET  /user/:uid`
 
+1. 用户登录
+
+    `POST   /v1/user/loginnew`
+
+    接口参数：
+
+```
+{
+	"login":"whatausername",
+	"password":"123"
+}
+```
+
+1. 用户注册
+
+    `POST   /v1/user/register`
+
+    接口参数：
+
+```
+{
+	"login":"whatausername",
+	"password":"123",
+	"name":"名字"
+}
+```
+
 ### volumes （谱册）
 
 1. List volumes
