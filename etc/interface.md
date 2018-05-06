@@ -51,7 +51,7 @@
 
     展示某个id的用户创建的所有的谱册的信息
 
-    ` GET  /volume/user/:uid`
+    ` GET  /volume/uid/:uid`
 
     **完成 有待分页**
 

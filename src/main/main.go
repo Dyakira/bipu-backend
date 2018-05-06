@@ -75,7 +75,8 @@ func main() {
 	// volume controller
 	{
 		v1.GET("/volume", controller.QueryVolumesAll)
-		v1.GET("/volume/user/:uid", controller.QueryVolumesByUid)
+		v1.POST("/volume", controller.InsertVolume)
+		v1.GET("/volume/uid/:uid", controller.QueryVolumesByUid)
 		v1.GET("/volume/vid/:vid", controller.QueryVolumesByVid)
 	}
 

@@ -24,7 +24,12 @@ func OkNormal(c *gin.Context, data interface{}) {
 	OkMsgNormal(c, "", data)
 }
 
-// 正常错误；返回码为-1，无信息，无附加数据
+// 正常错误，有附加信息；返回码为-1，无附加数据
 func ErrParamNormal(c *gin.Context, msg string) {
 	c.JSON(400, ReturnStruct(-1, msg, "", ""))
+}
+
+// 内部错误；返回码为-1，无信息，无附加数据
+func ErrInternalNormal(c *gin.Context) {
+	c.JSON(500, ReturnStruct(-1, "", "", ""))
 }
