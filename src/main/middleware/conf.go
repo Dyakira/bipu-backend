@@ -34,10 +34,15 @@ type Session struct {
 	SessionSecret string
 }
 
+type Others struct {
+	Md5Salt string
+}
+
 type Configuration struct {
 	Db          Db
 	Credentials Credentials
 	Session     Session
+	Others      Others
 }
 
 func GetConfig() (*Configuration, error) {

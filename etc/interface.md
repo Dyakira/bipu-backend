@@ -6,31 +6,35 @@
 
     ` GET  /user/:uid`
 
-1. 用户登录
+2. 用户登录
 
     `POST   /v1/user/loginnew`
 
-    接口参数：
-
 ```
+接口参数：
 {
 	"login":"whatausername",
 	"password":"123"
 }
+
+返回：
+去除password的user结构体
 ```
 
-1. 用户注册
+3. 用户注册
 
     `POST   /v1/user/register`
 
-    接口参数：
-
 ```
+接口参数：
 {
 	"login":"whatausername",
 	"password":"123",
 	"name":"名字"
 }
+
+返回：
+去除password的user结构体
 ```
 
 ### volumes （谱册）

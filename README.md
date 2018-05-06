@@ -7,6 +7,7 @@
 ### 配置
 
 conf/config.json 格式如下
+（除github键之外，其它所有字段均需填写，否则会导致数据库连不上，用户session不能用，登录注册不了等情况）
 
 ```
 {
@@ -26,7 +27,10 @@ conf/config.json 格式如下
   "Session":{
     "sessionName": "",
     "sessionSecret": ""
-  }
+  },
+    "Others":{
+      "md5Salt": ""
+    }
 }
 ```
 
